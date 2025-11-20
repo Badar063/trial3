@@ -24,7 +24,7 @@ st.set_page_config(
 )
 
 # =============================================================================
-# CUSTOM CSS STYLING - BLACK BACKGROUND WITH WHITE/PURPLE THEME
+# CUSTOM CSS STYLING - FIXED VISIBILITY
 # =============================================================================
 
 def apply_custom_styles():
@@ -32,18 +32,17 @@ def apply_custom_styles():
     <style>
     /* Main background */
     .stApp {
-        background-color: #000000;
+        background-color: #0f0f0f;
         color: #ffffff;
     }
     
-    /* Headers */
+    /* Headers - Fixed visibility */
     .main-header {
         font-size: 3rem;
         color: #8A2BE2;
         text-align: center;
         margin-bottom: 2rem;
         font-weight: bold;
-        text-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
     }
     
     .section-header {
@@ -52,86 +51,71 @@ def apply_custom_styles():
         border-bottom: 2px solid #8A2BE2;
         padding-bottom: 0.5rem;
         margin: 2rem 0 1rem 0;
-        text-shadow: 0 0 5px rgba(138, 43, 226, 0.3);
     }
     
-    /* Sidebar */
+    /* Sidebar - Fixed text visibility */
     .css-1d391kg, .css-1lcbmhc {
         background-color: #1a1a1a;
     }
     
-    /* Metric cards */
-    .metric-card {
-        background: linear-gradient(135deg, #1e1e1e, #2d2d2d);
-        padding: 1.5rem;
-        border-radius: 15px;
-        border: 1px solid #333;
-        margin: 0.5rem 0;
-        box-shadow: 0 4px 15px rgba(138, 43, 226, 0.2);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    .css-1d391kg p, .css-1lcbmhc p {
+        color: #ffffff !important;
     }
     
-    .metric-card:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(138, 43, 226, 0.3);
-        border-left: 4px solid #8A2BE2;
+    /* Metric cards */
+    .metric-card {
+        background: #1a1a1a;
+        padding: 1.5rem;
+        border-radius: 10px;
+        border: 1px solid #333;
+        margin: 0.5rem 0;
     }
     
     /* Dataset cards */
     .dataset-card {
-        background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
-        padding: 1.5rem;
-        border-radius: 12px;
-        border: 1px solid #444;
+        background: #1a1a1a;
+        padding: 1rem;
+        border-radius: 8px;
+        border: 1px solid #333;
         margin: 0.5rem 0;
-        box-shadow: 0 2px 10px rgba(138, 43, 226, 0.1);
     }
     
     /* Model comparison cards */
     .model-comparison {
-        background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
-        padding: 1.5rem;
-        border-radius: 12px;
-        border: 1px solid #444;
+        background: #1a1a1a;
+        padding: 1rem;
+        border-radius: 8px;
+        border: 1px solid #333;
         margin: 0.5rem 0;
-        box-shadow: 0 2px 8px rgba(138, 43, 226, 0.15);
-        transition: all 0.3s ease;
-    }
-    
-    .model-comparison:hover {
-        border-color: #8A2BE2;
-        box-shadow: 0 4px 15px rgba(138, 43, 226, 0.25);
     }
     
     /* Buttons */
     .stButton button {
-        background: linear-gradient(135deg, #8A2BE2, #6A0DAD);
+        background: #8A2BE2;
         color: white;
         border: none;
-        padding: 0.75rem 1.5rem;
-        border-radius: 8px;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
         font-weight: bold;
-        font-size: 1rem;
-        transition: all 0.3s ease;
-        box-shadow: 0 2px 10px rgba(138, 43, 226, 0.3);
     }
     
     .stButton button:hover {
-        background: linear-gradient(135deg, #9B30FF, #7A1FB8);
+        background: #7B1FA2;
         color: white;
-        transform: translateY(-1px);
-        box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);
     }
     
-    /* Select boxes and radio buttons */
-    .stSelectbox, .stRadio {
-        background-color: #1a1a1a;
-    }
-    
+    /* Select boxes and radio buttons - Fixed visibility */
     .stSelectbox div div {
-        background-color: #2a2a2a;
-        color: white;
-        border: 1px solid #444;
+        background-color: #2a2a2a !important;
+        color: white !important;
+    }
+    
+    .stRadio label {
+        color: white !important;
+    }
+    
+    .stSelectbox label {
+        color: white !important;
     }
     
     /* Dataframes */
@@ -140,15 +124,27 @@ def apply_custom_styles():
         color: white !important;
     }
     
-    /* Text colors */
-    .stMarkdown, .stText {
+    /* Text colors - Fixed all text visibility */
+    .stMarkdown {
+        color: #ffffff !important;
+    }
+    
+    .stText {
+        color: #ffffff !important;
+    }
+    
+    p {
+        color: #ffffff !important;
+    }
+    
+    label {
         color: #ffffff !important;
     }
     
     /* Metric values */
     [data-testid="metric-container"] {
         background-color: #1a1a1a;
-        border: 1px solid #444;
+        border: 1px solid #333;
         border-radius: 10px;
         padding: 1rem;
     }
@@ -168,25 +164,48 @@ def apply_custom_styles():
         color: #00FF7F !important;
     }
     
-    /* Plotly chart background */
-    .js-plotly-plot .plotly, .modebar {
-        background-color: #1a1a1a !important;
+    /* Make sure all streamlit text is visible */
+    .css-1offfwp {
+        color: #ffffff !important;
     }
     
-    /* Custom glowing effect for important elements */
-    .glowing-text {
-        color: #8A2BE2;
-        text-shadow: 0 0 10px rgba(138, 43, 226, 0.7), 
-                     0 0 20px rgba(138, 43, 226, 0.5),
-                     0 0 30px rgba(138, 43, 226, 0.3);
+    .css-12oz5g7 {
+        color: #ffffff !important;
     }
     
-    /* Custom divider */
-    .custom-divider {
-        height: 2px;
-        background: linear-gradient(90deg, transparent, #8A2BE2, transparent);
-        margin: 2rem 0;
-        border: none;
+    /* Fix widget labels */
+    .st-bb {
+        color: white !important;
+    }
+    
+    .st-bc {
+        color: white !important;
+    }
+    
+    .st-bd {
+        color: white !important;
+    }
+    
+    .st-be {
+        color: white !important;
+    }
+    
+    /* Fix select box text */
+    .st-bh {
+        color: white !important;
+    }
+    
+    .st-bi {
+        color: white !important;
+    }
+    
+    /* Fix radio button text */
+    .st-bj {
+        color: white !important;
+    }
+    
+    .st-bk {
+        color: white !important;
     }
     
     </style>
@@ -218,7 +237,7 @@ def load_training_histories():
         return {}
 
 # =============================================================================
-# VISUALIZATION FUNCTIONS WITH DARK THEME
+# VISUALIZATION FUNCTIONS
 # =============================================================================
 
 def create_performance_radar_chart(df, dataset_name):
@@ -241,33 +260,19 @@ def create_performance_radar_chart(df, dataset_name):
             theta=metric_names + [metric_names[0]],
             fill='toself',
             name=model,
-            line=dict(color=get_model_color(model), width=3),
-            fillcolor=get_model_color(model, alpha=0.3)
+            line=dict(color=get_model_color(model))
         ))
     
     fig.update_layout(
         polar=dict(
-            bgcolor='#1a1a1a',
             radialaxis=dict(
                 visible=True,
-                range=[0, 1],
-                color='white',
-                gridcolor='#444'
-            ),
-            angularaxis=dict(
-                color='white',
-                gridcolor='#444'
-            )
-        ),
-        paper_bgcolor='#000000',
-        plot_bgcolor='#1a1a1a',
-        font=dict(color='white'),
+                range=[0, 1]
+            )),
         showlegend=True,
-        title=dict(
-            text=f"Model Performance Radar - {dataset_name.upper()}",
-            font=dict(color='#8A2BE2', size=20)
-        ),
-        height=500
+        title=f"Model Performance Radar - {dataset_name.upper()}",
+        template="plotly_dark",
+        height=400
     )
     
     return fig
@@ -279,148 +284,72 @@ def create_training_history_plot(histories, dataset_name, model_name):
     
     history = histories[dataset_name][model_name]
     
-    fig = make_subplots(
-        rows=1, cols=2, 
-        subplot_titles=(
-            f'<span style="color:#8A2BE2">Accuracy</span>', 
-            f'<span style="color:#8A2BE2">Loss</span>'
-        )
-    )
+    fig = make_subplots(rows=1, cols=2, subplot_titles=('Accuracy', 'Loss'))
     
     # Accuracy plot
     if 'accuracy' in history and 'val_accuracy' in history:
         fig.add_trace(
-            go.Scatter(
-                y=history['accuracy'], 
-                name='Training Accuracy', 
-                line=dict(color='#8A2BE2', width=3),
-                marker=dict(size=8)
-            ),
+            go.Scatter(y=history['accuracy'], name='Training Accuracy', 
+                      line=dict(color='#8A2BE2')),
             row=1, col=1
         )
         fig.add_trace(
-            go.Scatter(
-                y=history['val_accuracy'], 
-                name='Validation Accuracy',
-                line=dict(color='#FFD700', width=3),
-                marker=dict(size=8)
-            ),
+            go.Scatter(y=history['val_accuracy'], name='Validation Accuracy',
+                      line=dict(color='#FFD700')),
             row=1, col=1
         )
     
     # Loss plot
     if 'loss' in history and 'val_loss' in history:
         fig.add_trace(
-            go.Scatter(
-                y=history['loss'], 
-                name='Training Loss',
-                line=dict(color='#8A2BE2', width=3),
-                marker=dict(size=8)
-            ),
+            go.Scatter(y=history['loss'], name='Training Loss',
+                      line=dict(color='#8A2BE2')),
             row=1, col=2
         )
         fig.add_trace(
-            go.Scatter(
-                y=history['val_loss'], 
-                name='Validation Loss',
-                line=dict(color='#FFD700', width=3),
-                marker=dict(size=8)
-            ),
+            go.Scatter(y=history['val_loss'], name='Validation Loss',
+                      line=dict(color='#FFD700')),
             row=1, col=2
         )
     
     fig.update_layout(
-        title=dict(
-            text=f"Training History - {model_name} on {dataset_name.upper()}",
-            font=dict(color='#8A2BE2', size=20)
-        ),
-        paper_bgcolor='#000000',
-        plot_bgcolor='#1a1a1a',
-        font=dict(color='white'),
-        height=500,
-        showlegend=True,
-        legend=dict(
-            bgcolor='#1a1a1a',
-            bordercolor='#444',
-            borderwidth=1
-        )
+        title=f"Training History - {model_name} on {dataset_name.upper()}",
+        template="plotly_dark",
+        height=400,
+        showlegend=True
     )
     
-    fig.update_xaxes(
-        title_text="Epochs", 
-        gridcolor='#444', 
-        zerolinecolor='#444',
-        row=1, col=1
-    )
-    fig.update_xaxes(
-        title_text="Epochs", 
-        gridcolor='#444', 
-        zerolinecolor='#444',
-        row=1, col=2
-    )
-    fig.update_yaxes(
-        title_text="Accuracy", 
-        gridcolor='#444', 
-        zerolinecolor='#444',
-        row=1, col=1
-    )
-    fig.update_yaxes(
-        title_text="Loss", 
-        gridcolor='#444', 
-        zerolinecolor='#444',
-        row=1, col=2
-    )
+    fig.update_xaxes(title_text="Epochs", row=1, col=1)
+    fig.update_xaxes(title_text="Epochs", row=1, col=2)
+    fig.update_yaxes(title_text="Accuracy", row=1, col=1)
+    fig.update_yaxes(title_text="Loss", row=1, col=2)
     
     return fig
 
 def create_comparison_bar_chart(df, metric, title):
     """Create comparison bar chart for different metrics"""
-    # Custom color sequence for models
-    color_discrete_map = {
-        'VGG16': '#8A2BE2',
-        'ResNet50': '#FFD700', 
-        'DenseNet121': '#00FF7F',
-        'EfficientNetB0': '#FF6347'
-    }
-    
-    fig = px.bar(
-        df, 
-        x='model_name', 
-        y=metric, 
-        color='model_name',
-        title=title,
-        color_discrete_map=color_discrete_map
-    )
+    fig = px.bar(df, x='model_name', y=metric, color='dataset_name',
+                 title=title,
+                 color_discrete_sequence=['#8A2BE2', '#FFD700', '#00FF7F', '#FF6347'],
+                 template="plotly_dark")
     
     fig.update_layout(
-        paper_bgcolor='#000000',
-        plot_bgcolor='#1a1a1a',
-        font=dict(color='white'),
-        xaxis=dict(
-            title="Model Architecture",
-            gridcolor='#444',
-            zerolinecolor='#444'
-        ),
-        yaxis=dict(
-            title=metric.replace('_', ' ').title(),
-            gridcolor='#444',
-            zerolinecolor='#444'
-        ),
-        height=500,
-        showlegend=False
+        xaxis_title="Model Architecture",
+        yaxis_title=metric.replace('_', ' ').title(),
+        height=400
     )
     
     return fig
 
-def get_model_color(model_name, alpha=1.0):
+def get_model_color(model_name):
     """Get consistent colors for each model"""
     color_map = {
-        'VGG16': f'rgba(138, 43, 226, {alpha})',      # Purple
-        'ResNet50': f'rgba(255, 215, 0, {alpha})',    # Gold
-        'DenseNet121': f'rgba(0, 255, 127, {alpha})', # Green
-        'EfficientNetB0': f'rgba(255, 99, 71, {alpha})' # Red
+        'VGG16': '#8A2BE2',      # Purple
+        'ResNet50': '#FFD700',   # Gold
+        'DenseNet121': '#00FF7F', # Green
+        'EfficientNetB0': '#FF6347' # Red
     }
-    return color_map.get(model_name, f'rgba(138, 43, 226, {alpha})')
+    return color_map.get(model_name, '#8A2BE2')
 
 # =============================================================================
 # METRIC DISPLAY FUNCTIONS
@@ -432,10 +361,6 @@ def display_metric_card(value, label, delta=None):
         st.metric(label=label, value=value, delta=delta)
     else:
         st.metric(label=label, value=value)
-
-def create_glowing_text(text, size="1.5rem"):
-    """Create glowing text effect"""
-    return f'<span style="color: #8A2BE2; font-size: {size}; text-shadow: 0 0 10px rgba(138, 43, 226, 0.7); font-weight: bold;">{text}</span>'
 
 # =============================================================================
 # MAIN DASHBOARD
@@ -453,53 +378,33 @@ def main():
         st.error("No data available. Please run the ArchNet benchmarking first.")
         return
     
-    # Header with glowing effect
-    st.markdown("""
-    <div style="text-align: center; padding: 2rem 0;">
-        <h1 class="main-header">🧠 ArchNet Medical AI Dashboard</h1>
-        <p style="color: #cccccc; font-size: 1.2rem;">Advanced Deep Learning Architecture Analysis Platform</p>
-    </div>
-    """, unsafe_allow_html=True)
+    # Header
+    st.markdown('<h1 class="main-header">🧠 ArchNet Medical AI Dashboard</h1>', 
+                unsafe_allow_html=True)
     
-    # Sidebar with dark theme
-    with st.sidebar:
-        st.markdown("""
-        <div style="padding: 1rem; border-radius: 10px; background: linear-gradient(135deg, #1a1a1a, #2a2a2a); border: 1px solid #444;">
-            <h2 style="color: #8A2BE2; text-align: center;">🔧 Navigation</h2>
-        </div>
-        """, unsafe_allow_html=True)
-        
-        st.markdown("<br>", unsafe_allow_html=True)
-        
-        # Dataset selection
-        datasets = results_df['dataset_name'].unique()
-        selected_dataset = st.selectbox(
-            "**Select Dataset**",
-            datasets,
-            format_func=lambda x: x.upper().replace('_', ' ')
-        )
-        
-        # Model selection
-        models = results_df['model_name'].unique()
-        selected_model = st.selectbox(
-            "**Select Model Architecture**",
-            models
-        )
-        
-        # Analysis type selection
-        analysis_type = st.radio(
-            "**Analysis Type**",
-            ["📊 Overview", "🔍 Model Comparison", "📈 Training Analysis", "🎯 Performance Deep Dive"],
-            index=0
-        )
-        
-        st.markdown("---")
-        st.markdown("""
-        <div style="color: #888; font-size: 0.9rem; text-align: center;">
-        Built with ❤️ using Streamlit<br>
-        ArchNet Research Project
-        </div>
-        """, unsafe_allow_html=True)
+    # Sidebar
+    st.sidebar.markdown("## 🔧 Navigation")
+    
+    # Dataset selection
+    datasets = results_df['dataset_name'].unique()
+    selected_dataset = st.sidebar.selectbox(
+        "Select Dataset",
+        datasets,
+        format_func=lambda x: x.upper().replace('_', ' ')
+    )
+    
+    # Model selection
+    models = results_df['model_name'].unique()
+    selected_model = st.sidebar.selectbox(
+        "Select Model Architecture",
+        models
+    )
+    
+    # Analysis type selection
+    analysis_type = st.sidebar.radio(
+        "Analysis Type",
+        ["📊 Overview", "🔍 Model Comparison", "📈 Training Analysis", "🎯 Performance Deep Dive"]
+    )
     
     # Main content area
     if analysis_type == "📊 Overview":
@@ -530,7 +435,7 @@ def display_overview(df, histories, dataset):
         st.markdown('<div class="metric-card">', unsafe_allow_html=True)
         display_metric_card(
             f"{best_model['test_accuracy']:.3f}",
-            "🏆 Best Accuracy",
+            "Best Accuracy",
             best_model['model_name']
         )
         st.markdown('</div>', unsafe_allow_html=True)
@@ -540,7 +445,7 @@ def display_overview(df, histories, dataset):
         st.markdown('<div class="metric-card">', unsafe_allow_html=True)
         display_metric_card(
             f"{fastest_model['inference_time']:.4f}s",
-            "⚡ Fastest Inference",
+            "Fastest Inference",
             fastest_model['model_name']
         )
         st.markdown('</div>', unsafe_allow_html=True)
@@ -550,7 +455,7 @@ def display_overview(df, histories, dataset):
         st.markdown('<div class="metric-card">', unsafe_allow_html=True)
         display_metric_card(
             f"{smallest_model['model_size_mb']:.1f} MB",
-            "📦 Smallest Model",
+            "Smallest Model",
             smallest_model['model_name']
         )
         st.markdown('</div>', unsafe_allow_html=True)
@@ -560,13 +465,12 @@ def display_overview(df, histories, dataset):
         st.markdown('<div class="metric-card">', unsafe_allow_html=True)
         display_metric_card(
             f"{best_f1_model['f1_score']:.3f}",
-            "🎯 Best F1-Score",
+            "Best F1-Score",
             best_f1_model['model_name']
         )
         st.markdown('</div>', unsafe_allow_html=True)
     
     # Performance charts
-    st.markdown("<br>", unsafe_allow_html=True)
     col1, col2 = st.columns(2)
     
     with col1:
@@ -591,29 +495,15 @@ def display_overview(df, histories, dataset):
         'inference_time', 'model_size_mb', 'training_time'
     ]].copy()
     
-    # Round values for display
-    for col in ['test_accuracy', 'precision', 'recall', 'f1_score']:
-        display_df[col] = display_df[col].round(3)
+    display_df['test_accuracy'] = display_df['test_accuracy'].round(3)
+    display_df['precision'] = display_df['precision'].round(3)
+    display_df['recall'] = display_df['recall'].round(3)
+    display_df['f1_score'] = display_df['f1_score'].round(3)
     display_df['inference_time'] = display_df['inference_time'].round(4)
     display_df['model_size_mb'] = display_df['model_size_mb'].round(1)
     display_df['training_time'] = display_df['training_time'].round(1)
     
-    # Style the dataframe
-    styled_df = display_df.style.format({
-        'test_accuracy': '{:.3f}',
-        'precision': '{:.3f}',
-        'recall': '{:.3f}',
-        'f1_score': '{:.3f}',
-        'inference_time': '{:.4f}',
-        'model_size_mb': '{:.1f}',
-        'training_time': '{:.1f}'
-    }).set_properties(**{
-        'background-color': '#1a1a1a',
-        'color': 'white',
-        'border': '1px solid #444'
-    })
-    
-    st.dataframe(styled_df, use_container_width=True)
+    st.dataframe(display_df, use_container_width=True)
 
 def display_model_comparison(df, dataset):
     """Display model comparison analysis"""
@@ -647,27 +537,27 @@ def display_model_comparison(df, dataset):
         st.markdown('<div class="metric-card">', unsafe_allow_html=True)
         st.markdown("**🏆 Best Overall**")
         best_overall = dataset_data.loc[dataset_data['test_accuracy'].idxmax()]
-        st.markdown(f"**{create_glowing_text(best_overall['model_name'])}**", unsafe_allow_html=True)
-        st.markdown(f"Accuracy: `{best_overall['test_accuracy']:.3f}`")
-        st.markdown(f"F1-Score: `{best_overall['f1_score']:.3f}`")
+        st.markdown(f"**{best_overall['model_name']}**")
+        st.markdown(f"Accuracy: {best_overall['test_accuracy']:.3f}")
+        st.markdown(f"F1-Score: {best_overall['f1_score']:.3f}")
         st.markdown("</div>", unsafe_allow_html=True)
     
     with col2:
         st.markdown('<div class="metric-card">', unsafe_allow_html=True)
         st.markdown("**⚡ Fastest Inference**")
         fastest = dataset_data.loc[dataset_data['inference_time'].idxmin()]
-        st.markdown(f"**{create_glowing_text(fastest['model_name'])}**", unsafe_allow_html=True)
-        st.markdown(f"Time: `{fastest['inference_time']:.4f}s`")
-        st.markdown(f"Accuracy: `{fastest['test_accuracy']:.3f}`")
+        st.markdown(f"**{fastest['model_name']}**")
+        st.markdown(f"Time: {fastest['inference_time']:.4f}s")
+        st.markdown(f"Accuracy: {fastest['test_accuracy']:.3f}")
         st.markdown("</div>", unsafe_allow_html=True)
     
     with col3:
         st.markdown('<div class="metric-card">', unsafe_allow_html=True)
         st.markdown("**📦 Most Efficient**")
         smallest = dataset_data.loc[dataset_data['model_size_mb'].idxmin()]
-        st.markdown(f"**{create_glowing_text(smallest['model_name'])}**", unsafe_allow_html=True)
-        st.markdown(f"Size: `{smallest['model_size_mb']:.1f} MB`")
-        st.markdown(f"Accuracy: `{smallest['test_accuracy']:.3f}`")
+        st.markdown(f"**{smallest['model_name']}**")
+        st.markdown(f"Size: {smallest['model_size_mb']:.1f} MB")
+        st.markdown(f"Accuracy: {smallest['test_accuracy']:.3f}")
         st.markdown("</div>", unsafe_allow_html=True)
 
 def display_training_analysis(df, histories, dataset, model):
@@ -754,16 +644,16 @@ def display_performance_deep_dive(df, dataset):
             col1, col2, col3 = st.columns([2, 2, 1])
             
             with col1:
-                st.markdown(f"**#{i} {create_glowing_text(row['model_name'], '1.2rem')}**", unsafe_allow_html=True)
-                st.markdown(f"Performance Score: `{row['performance_score']:.3f}`")
+                st.markdown(f"**#{i} {row['model_name']}**")
+                st.markdown(f"Performance Score: {row['performance_score']:.3f}")
             
             with col2:
-                st.markdown(f"Accuracy: `{row['test_accuracy']:.3f}`")
-                st.markdown(f"F1-Score: `{row['f1_score']:.3f}`")
+                st.markdown(f"Accuracy: {row['test_accuracy']:.3f}")
+                st.markdown(f"F1-Score: {row['f1_score']:.3f}")
             
             with col3:
-                st.markdown(f"Speed: `{row['inference_time']:.4f}s`")
-                st.markdown(f"Size: `{row['model_size_mb']:.1f}MB`")
+                st.markdown(f"Speed: {row['inference_time']:.4f}s")
+                st.markdown(f"Size: {row['model_size_mb']:.1f}MB")
             
             st.markdown('</div>', unsafe_allow_html=True)
     
@@ -779,34 +669,14 @@ def display_performance_deep_dive(df, dataset):
         color='model_name',
         hover_name='model_name',
         title='Accuracy vs Inference Time Trade-off',
-        color_discrete_map={
-            'VGG16': '#8A2BE2',
-            'ResNet50': '#FFD700',
-            'DenseNet121': '#00FF7F',
-            'EfficientNetB0': '#FF6347'
-        }
+        color_discrete_sequence=['#8A2BE2', '#FFD700', '#00FF7F', '#FF6347'],
+        template="plotly_dark"
     )
     
     fig.update_layout(
-        paper_bgcolor='#000000',
-        plot_bgcolor='#1a1a1a',
-        font=dict(color='white'),
-        xaxis=dict(
-            title="Inference Time (seconds)",
-            gridcolor='#444',
-            zerolinecolor='#444'
-        ),
-        yaxis=dict(
-            title="Accuracy",
-            gridcolor='#444', 
-            zerolinecolor='#444'
-        ),
-        height=500,
-        legend=dict(
-            bgcolor='#1a1a1a',
-            bordercolor='#444',
-            borderwidth=1
-        )
+        xaxis_title="Inference Time (seconds)",
+        yaxis_title="Accuracy",
+        height=500
     )
     
     st.plotly_chart(fig, use_container_width=True)
